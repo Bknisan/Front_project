@@ -15,6 +15,6 @@ initial front end files such login and register.
 </details>
  
  <details>
-           <summary>cd to this project folder and open the terminal</summary>
-           <p>run the command npm start</p>
+           <summary>application start</summary>
+           <p>cd to the project path and run the command npm start in the terminal</p>
 </details>
