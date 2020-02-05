@@ -1,0 +1,67 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './css/login.css';
+import Register from './Register.jsx';
+
+export default class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
+    }
+
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        // TODO : Check input with DB and redirect to other pages
+        fetch('http://localhost:9009/login/' + this.state.email + '/' + this.state.password)
+            .then(function(response) {
+                console.log(response.json());
+            })
+    }
+
+
+    render() {
+        return <div id={'form'}>
+            <form onSubmit={this.handleSubmit}>
+                <h1>Login</h1>
+                <hr/>
+                <br/>
+                <br/> 
+                <div className="form-group">
+                    <input type="text" className="form-control" name="email" placeholder="Email"
+                           onChange={this.handleInputChange} id="input" required/>
+                </div>
+                <div className="form-group">
+                    <input type="text" className="form-control" name="password" placeholder="Password"
+                           onChange={this.handleInputChange} id="input" required/>
+                </div>
+                <br/>
+                <br/>
+                <button type="submit" className="btn btn-success" id="button">Submit</button>
+                <br/>
+                <br/>
+                <a href="#" id="pass-forgot">forgot password?</a>
+                <br/>
+                <hr/>
+                <button onClick={() => ReactDOM.render(<Register/>, document.getElementById('root'))}
+                        type="button"
+                        className="btn btn-primary"
+                        id="button"
+                >Register
+                </button>
+            </form>
+        </div>
+
+    };
+};
