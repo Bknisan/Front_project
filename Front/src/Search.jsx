@@ -17,6 +17,7 @@ const input_style = {
     textOverflow: `ellipses`,
     top: '10px',
     right: '10px',
+    backgroundColor: 'white'
 };
 
 
