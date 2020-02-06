@@ -3,15 +3,30 @@ import MapContainer from "./Map";
 import {PlaceDetails} from "./PlaceDetails";
 import Register from "./Register"
 import Login from "./login";
-class App extends Component {
 
-    render() {
-        return (
-            <div className="App">
-                <Register/>
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from "react-router-dom";
+
+
+export default function App() {
+    return (
+        <Router>
+            <div>
+                <Switch>
+                    <Route exact path="/">
+                        <Login/>
+                    </Route>
+                    <Route path="/login">
+                        <Login/>
+                    </Route>
+                    <Route path="/register">
+                        <Register/>
+                    </Route>
+                </Switch>
             </div>
-        );
-    }
-}
-
-export default App;
+        </Router>
+    )
+};

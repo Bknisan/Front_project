@@ -11,6 +11,7 @@
     "react-motion": "^0.5.2",
     "react-places-autocomplete": "^7.2.1",
     "react-places-autocomplete-extended": "^6.0.8",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "0.9.5",
     "react-text-collapse": "^0.5.2"
   },
