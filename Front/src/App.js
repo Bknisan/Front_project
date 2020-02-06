@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
 import MapContainer from "./Map";
-import {PlaceDetails} from "./PlaceDetails";
 import Register from "./Register"
 import Login from "./login";
 

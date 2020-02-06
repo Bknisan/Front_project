@@ -35,7 +35,7 @@ export default class Login extends React.Component {
 
     render() {
         if (this.state.go_to_register) {
-            return <Redirect to="/register"/>
+            return <Redirect to="/register" push={true}/>
         } else return <div id={'form'}>
             <form onSubmit={this.handleSubmit}>
                 <h1>Login</h1>

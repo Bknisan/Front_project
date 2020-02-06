@@ -3,6 +3,7 @@ import {GoogleMap, Marker} from '@react-google-maps/api';
 import React, {Component} from "react";
 import Search from "./Search";
 import "./css/List.css"
+import {PlaceDetails} from "./PlaceDetails";
 
 const mapStyles = {
     width: '80%',
@@ -94,12 +95,12 @@ export class MapContainer extends Component {
                 >
                     {this.displayMarkers()}
                 </GoogleMap>
-                {/*{this.state.place_id !== null && <PlaceDetails place_id={this.state.place_id}/>}*/}
+                {this.state.place_id !== null && <PlaceDetails place_id={this.state.place_id}/>}
                 <div id="list">
                     <h1 style={{marginTop: '10px'}}>UserName</h1>
                     <hr/>
                     <br/>
-                    <h5>Destination List</h5>
+                    <h5>Destinations List</h5>
                     <ul className="list-group">
                         {this.displayNames()}
                     </ul>

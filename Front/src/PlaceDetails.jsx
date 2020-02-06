@@ -78,7 +78,7 @@ export class PlaceDetails extends Component {
         let opening = [];
         if (this.hours !== undefined) {
             opening.push(<i className="material-icons icon_margin" style={{color: '#32CD32'}}>{'access_time'}</i>);
-            opening.push(<label onClick={this.labelClick}>
+            opening.push(<label onClick={this.labelClick} style={{display : 'inline'}}>
                 <b>Opening Hours</b>
                 <i className="material-icons icon_margin">{this.state.icons[this.state.idx]}</i>
             </label>);

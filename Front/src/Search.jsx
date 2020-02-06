@@ -11,13 +11,14 @@ const input_style = {
     height: `32px`,
     padding: `0 12px`,
     borderRadius: `3px`,
-    boxShadow: `console.log()0 2px 6px rgba(0, 0, 0, 0.3)`,
+    boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
     fontSize: `14px`,
     outline: `none`,
     textOverflow: `ellipses`,
     top: '10px',
     right: '10px',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    borderColor:'black'
 };
 
 
@@ -35,7 +36,8 @@ export default function Search({setNewMarker}) {
         <div style={{
             position: 'absolute',
             marginLeft: '20%',
-            top: '0'
+            top: '0',
+            width: '19.25%'
         }}>
             <PlacesAutocomplete
                 value={address}
