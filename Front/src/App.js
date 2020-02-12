@@ -1,5 +1,5 @@
 import React from 'react';
-import MapContainer from "./Map";
+import MapContainer from "./Map_ChoosePlaces";
 import Register from "./Register"
 import Login from "./login";
 

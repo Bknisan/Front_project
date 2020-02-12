@@ -9,8 +9,6 @@ export default class Login extends React.Component {
         super(props);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
-
     }
 
     handleInputChange(event) {

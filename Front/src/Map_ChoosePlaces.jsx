@@ -17,7 +17,7 @@ const mapStyles = {
 };
 const mapOptions = {fullscreenControl: false, mapTypeControl: false};
 
-export class MapContainer extends Component {
+export class Map_ChoosePlaces extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,7 +26,9 @@ export class MapContainer extends Component {
                 lat: 51.509865
                 , lng: -0.118092
             },
-            place_id: null
+            place_id: null,
+            search_lat: null,
+            search_lon: null
         }
     }
 
@@ -41,11 +43,14 @@ export class MapContainer extends Component {
         })
     };
 
-    // Add new Marker to state
-    newMarker = (latLng, name, place_id) => {
-        this.state.markers.push({lat: latLng.lat, lng: latLng.lng, name: name});
-        const markers = this.state.markers;
-        this.setState({markers, center: {lat: latLng.lat, lng: latLng.lng}, place_id: place_id});
+    // Focus on new searched place and show details
+    searchClick = (latLng, place_id) => {
+        this.setState({
+            center: {lat: latLng.lat, lng: latLng.lng},
+            place_id: place_id,
+            search_lat: latLng.lat,
+            search_lon: latLng.lng
+        });
     };
 
     // Handle list item click
@@ -82,20 +87,30 @@ export class MapContainer extends Component {
         });
     };
 
+    newPlace = (lat, lon, name, place_id) => {
+        this.state.markers.push({lat: lat, lng: lon, name: name});
+        const markers = this.state.markers;
+        this.setState({markers, center: {lat: lat, lng: lon}, place_id: place_id});
+    };
 
     render() {
         return (
             <div>
                 <GoogleMap
-                    zoom={10}
+                    zoom={14}
                     mapContainerStyle={mapStyles}
                     initialCenter={this.state.center}
                     center={this.state.center}
                     options={mapOptions}
                 >
+                    {this.state.place_id !== null && <Marker
+                        position={{lat: this.state.search_lat, lng: this.state.search_lon}}
+                        label={'?'}
+                    />}
                     {this.displayMarkers()}
                 </GoogleMap>
-                {this.state.place_id !== null && <PlaceDetails place_id={this.state.place_id}/>}
+                {this.state.place_id !== null &&
+                <PlaceDetails place_id={this.state.place_id} addPlace={this.newPlace}/>}
                 <div id="list">
                     <h1 style={{marginTop: '10px'}}>UserName</h1>
                     <hr/>
@@ -109,7 +124,7 @@ export class MapContainer extends Component {
                         <button type="button" className="btn btn-secondary">Next</button>
                     </div>
                 </div>
-                <Search setNewMarker={this.newMarker}/>
+                <Search setNewMarker={this.searchClick}/>
 
             </div>
         );
@@ -118,4 +133,4 @@ export class MapContainer extends Component {
 
 export default GoogleApiWrapper({
     apiKey: 'AIzaSyB-5ZqhQMi_GAqi6zNnHEujTCc8zO_Nmp0'
-})(MapContainer, Search);
+})(Map_ChoosePlaces, Search);

@@ -4,7 +4,22 @@ import tst from './tst.jpg'
 import './index.css'
 import {Review} from "./Review";
 
+const buttonStyle = {
+    alignContent: 'center',
+    textAlign: 'center',
+    position: 'fixed',
+    width: '19%',
+    bottom: '0',
+    left: '0',
+    right: '0',
+    marginLeft: '20%',
+    marginRight: '5px',
+    backgroundColor: 'blue'
+};
+
 export class PlaceDetails extends Component {
+    lat;
+    lon;
     place_id;
     name;
     addr;
@@ -30,6 +45,8 @@ export class PlaceDetails extends Component {
     getDetails() {
         // TODO : ask server for information
         const result = myData.result;
+        this.lat = result.geometry.location.lat;
+        this.lon = result.geometry.location.lng;
         this.name = result.name;
         this.addr = result.formatted_address;
         this.phone = result.international_phone_number;
@@ -40,6 +57,7 @@ export class PlaceDetails extends Component {
         this.rating = result.rating;
         this.website = result.website
     }
+
 
     // called before render
     componentWillMount() {
@@ -78,7 +96,7 @@ export class PlaceDetails extends Component {
         let opening = [];
         if (this.hours !== undefined) {
             opening.push(<i className="material-icons icon_margin" style={{color: '#32CD32'}}>{'access_time'}</i>);
-            opening.push(<label onClick={this.labelClick} style={{display : 'inline'}}>
+            opening.push(<label onClick={this.labelClick} style={{display: 'inline'}}>
                 <b>Opening Hours</b>
                 <i className="material-icons icon_margin">{this.state.icons[this.state.idx]}</i>
             </label>);
@@ -114,6 +132,10 @@ export class PlaceDetails extends Component {
                 <hr/>
                 <Review reviews={this.reviews}/>
             </div>
+            <button type="button" className="btn btn-secondary" style={buttonStyle}
+                    onClick={() => this.props.addPlace(this.lat, this.lon, this.name, this.place_id)}>Add
+                Destination
+            </button>
         </div>
     }
 }

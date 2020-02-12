@@ -22,7 +22,7 @@ const input_style = {
 };
 
 
-export default function Search({setNewMarker}) {
+export default function Search({setNewMarker: placeChoose}) {
 
     const [address, setAddress] = React.useState("");
 
@@ -30,14 +30,14 @@ export default function Search({setNewMarker}) {
         const results = await geocodeByAddress(value);
         const place_id = results[0].place_id;
         const latLng = await getLatLng(results[0]);
-        setNewMarker(latLng, value, place_id);
+        placeChoose(latLng, place_id);
     };
     return (
         <div style={{
             position: 'absolute',
             marginLeft: '20%',
             top: '0',
-            width: '19.25%'
+            width: '19%'
         }}>
             <PlacesAutocomplete
                 value={address}
