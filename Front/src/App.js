@@ -1,8 +1,7 @@
 import React from 'react';
-import MapContainer from "./Map_ChoosePlaces";
 import Register from "./Register"
 import Login from "./login";
-
+import Map_ChoosePlaces from "./Map_ChoosePlaces";
 import {
     BrowserRouter as Router,
     Switch,
@@ -24,8 +23,8 @@ export default function App() {
                     <Route path="/register">
                         <Register/>
                     </Route>
-                    <Route path="/map">
-                        <MapContainer/>
+                    <Route path="/choosePlace">
+                        <Map_ChoosePlaces/>
                     </Route>
                 </Switch>
             </div>
