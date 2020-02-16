@@ -4,7 +4,6 @@ import React, {Component} from "react";
 import Search from "./Search";
 import "./css/List.css"
 import {PlaceDetails} from "./PlaceDetails";
-
 const mapStyles = {
     width: '80%',
     height: '100%',
@@ -132,5 +131,5 @@ export class Map_ChoosePlaces extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyB-5ZqhQMi_GAqi6zNnHEujTCc8zO_Nmp0'
+    apiKey: process.env.REACT_APP_GOOGLE_KEY
 })(Map_ChoosePlaces, Search);
